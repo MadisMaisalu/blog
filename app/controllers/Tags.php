@@ -6,6 +6,7 @@ class Tags extends Controller
     public function __construct()
     {
         $this->tagsModel = $this->model('Tag');
+        $this->postsModel = $this->model('Post');
     }
 
     public function index()
@@ -15,5 +16,14 @@ class Tags extends Controller
             'tags' => $tags
         );
         $this->view('tags/index', $data);
+    }
+
+    public function show($id)
+    {
+        $posts = $this->postsModel->getPostsByTagId($id);
+        $data = [
+            'posts' => $posts
+        ];
+        $this->view('tags/show', $data);
     }
 }

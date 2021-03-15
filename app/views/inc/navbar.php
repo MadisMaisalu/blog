@@ -10,6 +10,11 @@
                 <li class="nav-item">
                     <a href="<?php echo URLROOT; ?>" class="nav-link">Home</a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="<?php echo URLROOT; ?>/tags" class="nav-link">Tags</a>
+                </li>
+
                 <li class="nav-item">
                     <a href="<?php echo URLROOT; ?>/tags" class="nav-link">Tags</a>
                 </li>

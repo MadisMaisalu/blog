@@ -6,10 +6,17 @@
 <p><?php echo $data['post']->content; ?></p>
 <a href="<?php echo URLROOT ?>/posts" class="btn btn-info">Back</a>
 <hr>
+<div class="p-3 mb-3"> Tags:
+    <?php foreach ($data['tags'] as $tag): ?>
+        <a href="<?php echo URLROOT ?>/tags/show/<?php echo $tag->id; ?>"
+           class="badge badge-info"><span></span><?php echo $tag->name; ?></a>
+    <?php endforeach; ?>
+</div>
 <?php if ($data['post']->user_id == $_SESSION['user_id']): ?>
     <div class="row justify-content-around">
         <div class="col-8">
-            <a href="<?php echo URLROOT ?>/posts/edit/<?php echo $data['post']->id; ?>" class="btn btn-success">Edit</a>
+            <a href="<?php echo URLROOT ?>/posts/edit/<?php echo $data['post']->id; ?>"
+               class="btn btn-success">Edit</a>
         </div>
         <div class="col-4">
             <form action="<?php echo URLROOT ?>/posts/delete/<?php echo $data['post']->id; ?>" method="post">

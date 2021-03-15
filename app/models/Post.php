@@ -31,10 +31,18 @@ class Post
 
     public function getPostById($id)
     {
-        $this->db->query('SELECT * FROM posts WHERE id=:id');
-        $this->db->bind(':id', $id);
-        $post = $this->db->getOne();
-        return $post;
+        $this->db->query('SELECT *,
+            posts.id AS postId,
+            users.id AS userId,
+            posts.created_at AS postCreated
+            FROM posts
+            JOIN users
+            ON posts.user_id = users.id 
+            JOIN post_tags 
+            ON posts.id=post_tags.post_id 
+            WHERE post_tags.tag_id=:id');
+        $this->db->bind('id', $id);
+        return $result = $this->db->getAll();
     }
 
     public function deletePost($id)
